@@ -14,10 +14,14 @@ int	main(int argc, char *argv[])
 {
 	if (!validArguments(argc))
 		return 1;
-
-	RPN notation(argv[1]);
-
-	std::cout << notation.getResult() << '\n';
-	
+	try
+	{
+		RPN notation(argv[1]);
+		std::cout << notation.getResult() << '\n';
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << '\n';
+	}
 	return 0;
 }

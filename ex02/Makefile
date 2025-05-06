@@ -4,10 +4,10 @@ YELLOW := \033[33m
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp 
+SRC = main.cpp PmergeMe.cpp
 OBJ_DIR = obj
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
-NAME = ex02
+NAME = PmergeMe
 
 all: $(NAME)
 

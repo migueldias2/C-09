@@ -9,10 +9,12 @@ void fillStack(std::stack<std::string>& stack, std::list<std::string>& list);
 RPN::RPN(const std::string& string)
 {
 	if (!validInput(string, list))
-		std::exit(EXIT_SUCCESS);
+		throw std::runtime_error("Invalid input");
 }
 
-RPN::~RPN(){}
+RPN::~RPN()
+{
+}
 
 float RPN::getResult()
 {
@@ -35,7 +37,12 @@ float RPN::getResult()
 			else if (token == "*")
 				numbers.push(operand1 * operand2);
 			else if (token == "/")
+			{
+				if (token == "/" && operand2 == 0.0f) {
+					throw std::runtime_error("Error: division by zero");
+				}
 				numbers.push(operand1 / operand2);
+			}
 		}
 		else
 			numbers.push(strtof(token.c_str(), &end));
